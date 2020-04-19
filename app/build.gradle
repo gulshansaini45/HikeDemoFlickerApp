@@ -1,0 +1,145 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Android.targetSdkVersion
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        applicationId "in.gulshan.hikedemoflickerapp"
+        minSdkVersion Android.minSdkVersion
+        targetSdkVersion Android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "FORMAT", "\"${format}\""
+        buildConfigField "String", "METHOD", "\"${method}\""
+        buildConfigField "String", "NOJSONCALLBACK", "\"${nojsoncallback}\""
+
+        buildConfigField "String", "API_KEY", "\"${apiKey}\""
+        buildConfigField "String", "BASE_URL", "\"${baseUrl}\""
+        buildConfigField "String", "APP_NAME", "\"HikeDemo\""
+
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            testCoverageEnabled true
+            crunchPngs false
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        checkTestSources true
+        ignoreWarnings true
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.squareup.okhttp3:okhttp:3.12.1'
+        // Don't remove this, required to support TLS on 4.4
+    }
+}
+
+androidExtensions {
+    experimental = true // For using @Parcelize
+    defaultCacheImplementation = "SPARSE_ARRAY" // Used for view caching strategy
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(':remote')
+    implementation project(':data')
+
+    implementation Support.appcompat
+    implementation Support.appCompactResource
+    implementation Support.viewModelLifecycle
+    implementation Support.viewModelLifecycleExt
+    implementation Support.multidex
+
+
+    implementation Views.coreKotlin
+    implementation Views.constraintLayout
+    testImplementation Testing.JUnit
+    androidTestImplementation Testing.TestRunner
+    androidTestImplementation Testing.Expresso
+
+    //Dagger-2
+    implementation Dagger.dagger
+    implementation Dagger.daggerAndroid
+    kapt Dagger.daggerCompiler
+    kapt Dagger.daggerAndroidCompiler
+    compileOnly Dagger.javaxAnnotation
+    // APT dependencies
+    kaptTest Dagger.daggerCompiler
+    kaptAndroidTest Dagger.daggerAndroidCompiler
+
+
+    //Network (Retrofit, OkHttp, Logging interceptor)
+    implementation Network.okhttp
+    implementation Network.okhttpLoggingInterceptor
+    implementation Network.retrofit
+    implementation Network.gson
+    implementation Network.retrofitRxAdapter
+
+
+    //Stetho
+    debugImplementation Debug.stetho
+    debugImplementation Debug.stethoOkhttp
+    releaseImplementation Debug.stethoNoOp
+
+    //Chuck Interceptor
+    debugImplementation Debug.chuck
+    releaseImplementation Debug.chuckNoOp
+
+    //Glide
+    implementation Glide.glide
+    implementation Glide.glidePallet
+    implementation Glide.gileOkhttp
+    kapt Glide.glideCompiler
+
+    //Leak Canary
+    debugImplementation Debug.leakcanary
+    releaseImplementation Debug.leakcanaryNoOp
+
+
+    //RxJava-2
+    implementation Reactive.rxJava
+    implementation Reactive.rxAndroid
+    implementation Reactive.rxKotlin
+    implementation Reactive.rxBinding
+    implementation Reactive.rxProguard
+    implementation Reactive.rxTraceur
+    debugImplementation Reactive.rxDebug
+
+    implementation Extras.timber
+}

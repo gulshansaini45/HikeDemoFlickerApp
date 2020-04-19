@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Android.minSdkVersion
+        targetSdkVersion Android.targetSdkVersion
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+androidExtensions {
+    experimental = true // For using @Parcelize
+}
+
+dependencies {
+    implementation project(':remote')
+    implementation Views.coreKotlin
+
+    implementation Dagger.javaxInject
+    implementation Network.okhttp
+    implementation Network.gson
+    implementation Reactive.rxJava
+
+    implementation Network.okhttp
+    // Unit tests dependencies
+    testImplementation Network.retrofitRxAdapter
+    testImplementation Network.gson
+
+    implementation Extras.timber
+
+}
