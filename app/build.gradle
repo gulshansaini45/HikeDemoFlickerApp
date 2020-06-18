@@ -19,13 +19,13 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "FORMAT", "\"${format}\""
-        buildConfigField "String", "METHOD", "\"${method}\""
-        buildConfigField "String", "NOJSONCALLBACK", "\"${nojsoncallback}\""
+        buildConfigField "String", "Q", "\"${q}\""
+        buildConfigField "String", "sortBy", "\"${sortBy}\""
+        buildConfigField "String", "from", "\"${from}\""
 
         buildConfigField "String", "API_KEY", "\"${apiKey}\""
         buildConfigField "String", "BASE_URL", "\"${baseUrl}\""
-        buildConfigField "String", "APP_NAME", "\"HikeDemo\""
+        buildConfigField "String", "APP_NAME", "\"SampleDemo\""
 
     }
 

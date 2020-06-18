@@ -11,18 +11,16 @@ class MainRepository
 ) {
 
     fun getFlickerImage(
-        search: String,
-        apiKey: String,
-        method: String,
-        format: String,
-        nojsonCallback: String
+        q: String,
+        from: String,
+        sortBy: String,
+        apiKey: String
     ): Single<SearchResponse> {
         return hikeServices.getFlickerImages(
-            method = method,
             apiKey = apiKey,
-            format = format,
-            nojsoncallback = nojsonCallback,
-            text = search
+            q = q,
+            from = from,
+            sortBy = sortBy
         )
     }
 }

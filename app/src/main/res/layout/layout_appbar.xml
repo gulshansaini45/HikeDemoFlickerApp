@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/appbar"
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize">
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:popupTheme="@style/MyMaterialTheme.PopupOver">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tvToolbarTitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/roboto_slab_bold"
+      android:textColor="@color/white"
+      android:gravity="center"
+      android:textSize="29sp"
+      android:text="@string/headlines"
+      tools:text="SampleDemo" />
+
+  </androidx.appcompat.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>

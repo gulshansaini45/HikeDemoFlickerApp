@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">HikeDemoFlickerApp</string>
+    <string name="app_name">SampleDemoFlickerApp</string>
     <string name="default_response_message">OOP\'s something went wrong, Please try again!</string>
     <string name="error_no_internet">No internet connection, Please check your connectivity</string>
     <string name="search">Search</string>
     <string name="enter_search_text">Enter search text</string>
     <string name="imageUrlPath">http://farm%1d.static.flickr.com/%2s/%3s_%4s.jpg</string>
+    <string name="headlines">HEADLINES</string>
 </resources>

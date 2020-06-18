@@ -7,13 +7,12 @@ import retrofit2.http.Query
 
 interface HikeServices {
 
-    @GET("services/rest/")
+    @GET("everything/")
     fun getFlickerImages(
-        @Query("method") method: String,
-        @Query("api_key") apiKey: String,
-        @Query("format") format: String,
-        @Query("nojsoncallback") nojsoncallback: String,
-        @Query("text") text: String
+        @Query("q") q: String,
+        @Query("apiKey") apiKey: String,
+        @Query("from") from: String,
+        @Query("sortBy") sortBy: String
     ): Single<SearchResponse>
 
 
